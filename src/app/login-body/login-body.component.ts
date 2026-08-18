@@ -75,6 +75,7 @@ export class LoginBodyComponent implements OnInit, OnDestroy {
   loadCompanies(search: string = ''): void {
     this.isLoadingCompanies = true;
     this.companyError = '';
+    // Hello WOrld
 
     this.companyService.getCompanies(search).subscribe({
       next: (companies) => {
