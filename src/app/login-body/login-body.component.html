@@ -1,0 +1,668 @@
+<div class="login-page">
+
+  <!-- LEFT HERO SECTION -->
+  <section class="hero-section">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+      <div class="brand">
+        <div class="brand-icon">
+          ✓
+        </div>
+
+        <div class="brand-text">
+          <span class="brand-name">Safe</span>
+          <span class="brand-name-light">Flow</span>
+        </div>
+      </div>
+
+      <div class="hero-badge">
+        FOOD SAFETY MANAGEMENT
+      </div>
+
+      <h1>
+        Smarter food safety.
+        <span>Safer businesses.</span>
+      </h1>
+
+      <p class="hero-description">
+        Manage food safety operations, compliance, audits and
+        daily inspections from one secure platform.
+      </p>
+
+      <div class="hero-features">
+
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <span>Digital compliance management</span>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <span>Real-time safety monitoring</span>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <span>Multi-location management</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="hero-bottom">
+      <span>SECURE PLATFORM</span>
+      <span class="separator">•</span>
+      <span>GDPR READY</span>
+      <span class="separator">•</span>
+      <span>CLOUD BASED</span>
+    </div>
+
+  </section>
+
+
+  <!-- RIGHT LOGIN SECTION -->
+  <section class="login-section">
+
+    <div class="login-card">
+
+      <div class="login-header">
+
+        <div class="mobile-brand">
+          <div class="mobile-brand-icon">✓</div>
+          <span>Safe<span>Flow</span></span>
+        </div>
+
+        <h2>Welcome Back</h2>
+
+        <p>
+          Sign in to continue to your account
+        </p>
+
+      </div>
+
+
+      <!-- FORM-LEVEL ERROR BANNER -->
+      @if (formError) {
+        <div class="form-error-banner" role="alert">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span>{{ formError }}</span>
+        </div>
+      }
+
+
+      <!-- COMPANY -->
+      <div class="form-group">
+
+        <label>
+          Company
+        </label>
+
+        <div
+          class="company-selector"
+          [class.field-invalid]="companyTouched && !selectedCompany">
+
+          <div class="company-info">
+
+            <div class="building-icon">
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2">
+                <path d="M3 21h18"></path>
+                <path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"></path>
+                <path d="M9 7h1"></path>
+                <path d="M14 7h1"></path>
+                <path d="M9 11h1"></path>
+                <path d="M14 11h1"></path>
+                <path d="M9 15h1"></path>
+                <path d="M14 15h1"></path>
+              </svg>
+            </div>
+
+           <span>
+            Company:
+          <strong>
+          {{ selectedCompany?.name || 'Not selected' }}
+          </strong>
+          </span>
+
+          </div>
+
+         <button
+             type="button"
+            class="change-button"
+            (click)="openCompanyModal()">
+              Change
+         </button>
+
+        </div>
+
+        @if (companyTouched && !selectedCompany) {
+          <span class="error-text">Please select a company to continue.</span>
+        }
+
+      </div>
+
+
+      <!-- EMAIL -->
+      <div class="form-group">
+
+        <label for="email">
+          Email Address
+        </label>
+
+        <div
+          class="input-wrapper"
+          [class.field-invalid]="emailTouched && !isEmailValid">
+
+          <svg
+            class="input-icon"
+            width="19"
+            height="19"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2">
+            <rect
+              x="3"
+              y="5"
+              width="18"
+              height="14"
+              rx="2">
+            </rect>
+            <path d="m3 7 9 6 9-6"></path>
+          </svg>
+
+          <input
+            id="email"
+            type="email"
+            [(ngModel)]="email"
+            (blur)="onEmailBlur()"
+            (keyup.enter)="onLogin()"
+            autocomplete="email"
+            placeholder="Enter your email address"
+          />
+
+        </div>
+
+        @if (emailTouched && !isEmailValid) {
+          <span class="error-text">Enter a valid email address.</span>
+        }
+
+      </div>
+
+
+      <!-- PASSWORD -->
+      <div class="form-group">
+
+        <div class="password-label">
+
+          <label for="password">
+            Password
+          </label>
+
+          <a href="javascript:void(0)">
+            Forgot Password?
+          </a>
+
+        </div>
+
+        <div
+          class="input-wrapper"
+          [class.field-invalid]="passwordTouched && !isPasswordValid">
+
+          <svg
+            class="input-icon"
+            width="19"
+            height="19"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2">
+            <rect
+              x="4"
+              y="10"
+              width="16"
+              height="11"
+              rx="2">
+            </rect>
+            <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+          </svg>
+
+          <input
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            [(ngModel)]="password"
+            (blur)="onPasswordBlur()"
+            (keyup.enter)="onLogin()"
+            autocomplete="current-password"
+            placeholder="Enter your password"
+          />
+
+          <button
+            type="button"
+            class="toggle-password-btn"
+            [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+            (click)="togglePasswordVisibility()">
+
+            @if (showPassword) {
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.6 18.6 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            } @else {
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            }
+
+          </button>
+
+        </div>
+
+        @if (passwordTouched && !isPasswordValid) {
+          <span class="error-text">Password must be at least 6 characters.</span>
+        }
+
+      </div>
+
+
+      <!-- REMEMBER ME -->
+      <div class="remember-row">
+
+        <label class="remember-label">
+
+          <input
+            type="checkbox"
+            [(ngModel)]="rememberMe"
+          />
+
+          <span class="custom-checkbox"></span>
+
+          <span>
+            Remember me
+          </span>
+
+        </label>
+
+      </div>
+
+
+      <!-- LOGIN BUTTON -->
+      <button
+        type="button"
+        class="login-button"
+        [disabled]="isLoggingIn"
+        (click)="onLogin()">
+
+        @if (isLoggingIn) {
+          <span class="btn-spinner"></span>
+          <span>Signing In...</span>
+        } @else {
+          <span>Sign In</span>
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14"></path>
+            <path d="m13 6 6 6-6 6"></path>
+          </svg>
+        }
+
+      </button>
+
+
+      <!-- SECURITY -->
+      <div class="security-info">
+
+        <div class="security-line"></div>
+
+        <div class="security-content">
+
+          <svg
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2">
+            <rect
+              x="4"
+              y="10"
+              width="16"
+              height="11"
+              rx="2">
+            </rect>
+            <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+          </svg>
+
+          <span>
+            Secure encrypted login
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 SafeFlow. All rights reserved.
+    </div>
+
+  </section>
+
+</div>
+<!-- =========================================
+     CHANGE COMPANY MODAL
+========================================= -->
+
+@if (showCompanyModal) {
+
+  <div
+    class="modal-backdrop"
+    (click)="onModalBackgroundClick($event)">
+
+    <div
+      class="company-modal company-selector-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="companyModalTitle">
+
+
+      <!-- HEADER -->
+
+      <div class="modal-header">
+
+        <div>
+
+          <h3 id="companyModalTitle">
+            Select Company
+          </h3>
+
+          <p>
+            Choose a company to continue
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="modal-close"
+          aria-label="Close"
+          (click)="closeCompanyModal()">
+
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5">
+
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+
+          </svg>
+
+        </button>
+
+      </div>
+
+
+      <!-- SEARCH -->
+
+      <div class="company-search">
+
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2">
+
+          <circle
+            cx="11"
+            cy="11"
+            r="7">
+          </circle>
+
+          <path d="m20 20-4-4"></path>
+
+        </svg>
+
+
+        <input
+          type="text"
+          [ngModel]="companySearch"
+          (ngModelChange)="onCompanySearchChange($event)"
+          placeholder="Search company..."
+          autocomplete="off"
+        />
+
+
+        @if (companySearch) {
+
+          <button
+            type="button"
+            class="clear-search"
+            (click)="onCompanySearchChange('')">
+
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2">
+
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+
+            </svg>
+
+          </button>
+
+        }
+
+      </div>
+
+
+      <!-- COMPANY LIST -->
+
+      <div class="company-list">
+
+        <!-- LOADING STATE -->
+        @if (isLoadingCompanies) {
+
+          <div class="company-loading">
+            <span class="btn-spinner spinner-dark"></span>
+            <span>Loading companies...</span>
+          </div>
+
+        } @else if (companyError) {
+
+          <!-- ERROR STATE -->
+          <div class="company-empty">
+
+            <div class="empty-icon">
+              <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+
+            <h4>{{ companyError }}</h4>
+
+            <button type="button" class="host-button" (click)="loadCompanies(companySearch)">
+              Try again
+            </button>
+
+          </div>
+
+        } @else {
+
+          @for (company of filteredCompanies; track company.id) {
+
+            <button
+              type="button"
+              class="company-option"
+              [class.selected]="selectedCompany?.id === company.id"
+              (click)="selectCompany(company)">
+
+              <div class="company-avatar">
+                {{ company.initials }}
+              </div>
+
+
+              <div class="company-details">
+
+                <span class="company-name">
+                  {{ company.name }}
+                </span>
+
+                <span class="company-location">
+
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path
+                      d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z">
+                    </path>
+
+                    <circle
+                      cx="12"
+                      cy="10"
+                      r="2.5">
+                    </circle>
+
+                  </svg>
+
+                  {{ company.location }}
+
+                </span>
+
+              </div>
+
+
+              @if (selectedCompany?.id === company.id) {
+
+                <div class="selected-check">
+
+                  <svg
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5">
+
+                    <path d="m5 12 4 4L19 7"></path>
+
+                  </svg>
+
+                </div>
+
+              }
+
+            </button>
+
+          }
+
+
+          <!-- EMPTY STATE -->
+
+          @if (filteredCompanies.length === 0) {
+
+            <div class="company-empty">
+
+              <div class="empty-icon">
+
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7">
+
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="7">
+                  </circle>
+
+                  <path d="m20 20-4-4"></path>
+
+                </svg>
+
+              </div>
+
+              <h4>No companies found</h4>
+
+              <p>
+                Try searching with another company name.
+              </p>
+
+            </div>
+
+          }
+
+        }
+
+      </div>
+
+
+      <!-- FOOTER -->
+
+      <div class="modal-footer company-modal-footer">
+
+        <button
+          type="button"
+          class="host-button"
+          (click)="continueAsHost()">
+
+          Continue as Host
+
+        </button>
+
+
+        <button
+          type="button"
+          class="modal-cancel"
+          (click)="closeCompanyModal()">
+
+          Cancel
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}

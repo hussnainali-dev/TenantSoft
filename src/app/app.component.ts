@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { LoginBodyComponent } from './login-body/login-body.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
+  standalone: true,
+  imports: [LoginBodyComponent],
+  template: `
+    <app-login-body></app-login-body>
+  `,
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'tenantsoft';
-}
+export class AppComponent {}
