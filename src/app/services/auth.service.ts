@@ -7,7 +7,7 @@ import { Company } from '../models/company';
 @Injectable({
   providedIn: 'root'
 })
-export class CompanyService {
+export class aService {
 
   private readonly apiUrl = '/api/companies';
 

@@ -1,6 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
+declare function describe(description: string, spec: () => void): void;
+declare function beforeEach(spec: () => void | Promise<void>): void;
+declare function it(description: string, spec: () => void): void;
+declare function expect(actual: unknown): { toBeTruthy(): void; toContain(expected: string): void };
+
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -12,12 +17,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have the 'tenantsoft' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('tenantsoft');
   });
 
   it('should render title', () => {

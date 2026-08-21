@@ -1,0 +1,25 @@
+<div class="verification">
+
+  @if (isVerifying) {
+
+    <div class="verification-loading">
+      Verifying company...
+    </div>
+
+  }
+
+  @if (errorMessage) {
+
+    <div class="verification-error">
+
+      <span class="error-icon">!</span>
+
+      <span>
+        {{ errorMessage }}
+      </span>
+
+    </div>
+
+  }
+
+</div>

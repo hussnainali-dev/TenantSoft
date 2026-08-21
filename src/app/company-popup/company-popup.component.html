@@ -1,0 +1,150 @@
+@if (show) {
+
+  <div
+    class="company-popup-backdrop"
+    (click)="onBackgroundClick($event)"
+  >
+
+    <div
+      class="company-popup"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="companyPopupTitle"
+    >
+
+      <!-- =========================================
+           HEADER
+      ========================================== -->
+
+      <div class="company-popup-header">
+
+        <div>
+          <h2 id="companyPopupTitle">
+            Change Company
+          </h2>
+
+          <p>
+            Enter your company name to continue.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="company-popup-close"
+          aria-label="Close"
+          [disabled]="isVerifying"
+          (click)="onClose()"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <!-- =========================================
+           BODY
+      ========================================== -->
+
+      <div class="company-popup-body">
+
+        <label for="companyName">
+          Company Name
+          <span>*</span>
+        </label>
+
+
+        <input
+          id="companyName"
+          type="text"
+          [(ngModel)]="companySearch"
+          placeholder="Enter company name"
+          autocomplete="off"
+          [disabled]="isVerifying"
+        />
+
+
+        <!-- =========================================
+             VERIFICATION (loading + error rendered
+             internally by app-verification)
+        ========================================== -->
+
+        <app-verification
+          [companyName]="companySearch"
+          (verificationSuccess)="onVerificationSuccess($event)"
+          (verificationFailed)="onVerificationFailed($event)"
+        ></app-verification>
+
+
+        <!-- =========================================
+             INFO
+        ========================================== -->
+
+        <div class="company-popup-info">
+
+          <span class="info-icon">
+            i
+          </span>
+
+          <span>
+            Enter a valid company name.
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================================
+           FOOTER
+      ========================================== -->
+
+      <div class="company-popup-footer">
+
+        <button
+          type="button"
+          class="company-popup-cancel"
+          [disabled]="isVerifying"
+          (click)="onClose()"
+        >
+          Cancel
+        </button>
+
+
+        <button
+          type="button"
+          class="company-popup-host"
+          [disabled]="isVerifying"
+          (click)="onContinueAsHost()"
+        >
+          Continue as Host
+        </button>
+
+
+        <button
+          type="button"
+          class="company-popup-save"
+          [disabled]="isVerifying"
+          (click)="onSave()"
+        >
+
+          @if (isVerifying) {
+
+            <span class="popup-spinner"></span>
+
+            Verifying...
+
+          } @else {
+
+            Save
+
+          }
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}

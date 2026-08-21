@@ -1,0 +1,66 @@
+<div class="otp-modal">
+
+  <button
+    class="otp-close-btn"
+    type="button"
+    (click)="onClose()"
+  >
+    &times;
+  </button>
+
+  <h2>Verify your email</h2>
+
+  <p class="otp-subtitle">
+    Enter the 6-digit code sent to <strong>{{ email }}</strong>
+  </p>
+
+  <input
+    type="text"
+    inputmode="numeric"
+    maxlength="6"
+    placeholder="000000"
+    class="otp-input"
+    [(ngModel)]="code"
+    (keyup.enter)="verifyCode()"
+  />
+
+  <p class="otp-error" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </p>
+
+  <p class="otp-resend-message" *ngIf="resendMessage">
+    {{ resendMessage }}
+  </p>
+
+  <button
+    type="button"
+    class="otp-verify-btn"
+    [disabled]="isVerifying"
+    (click)="verifyCode()"
+  >
+    {{ isVerifying ? 'Verifying...' : 'Verify' }}
+  </button>
+
+  <div class="otp-actions">
+
+    <button
+      type="button"
+      class="otp-resend-btn"
+      [disabled]="isResending || isVerifying"
+      (click)="resendCode()"
+    >
+      {{ isResending ? 'Resending...' : 'Resend code' }}
+    </button>
+
+    <button
+      type="button"
+      class="otp-back-login"
+      [disabled]="isVerifying"
+      (click)="onClose()"
+    >
+      ← Back to login
+    </button>
+
+  </div>
+
+</div>

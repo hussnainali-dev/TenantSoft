@@ -1,3 +1,7 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 * {
   box-sizing: border-box;
 }
@@ -6,19 +10,26 @@
   min-height: 100vh;
   width: 100%;
   display: flex;
+
   background: #07110f;
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 }
 
 
-/* =========================================
+/* =========================================================
    LEFT HERO
-========================================= */
+========================================================= */
 
 .hero-section {
   position: relative;
+
   width: 58%;
   min-height: 100vh;
+
   overflow: hidden;
 
   background-image:
@@ -60,14 +71,16 @@
 }
 
 
-/* =========================================
+/* =========================================================
    BRAND
-========================================= */
+========================================================= */
 
 .brand {
   display: flex;
   align-items: center;
+
   gap: 13px;
+
   margin-bottom: 110px;
 }
 
@@ -83,7 +96,8 @@
 
   background: #18a957;
 
-  color: white;
+  color: #ffffff;
+
   font-size: 24px;
   font-weight: 700;
 
@@ -94,6 +108,7 @@
 .brand-text {
   font-size: 30px;
   font-weight: 700;
+
   letter-spacing: -1px;
 }
 
@@ -106,9 +121,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    HERO TEXT
-========================================= */
+========================================================= */
 
 .hero-badge {
   display: inline-block;
@@ -124,6 +139,7 @@
 
   font-size: 11px;
   font-weight: 700;
+
   letter-spacing: 1.6px;
 
   margin-bottom: 22px;
@@ -137,12 +153,15 @@
   color: #ffffff;
 
   font-size: clamp(42px, 4.2vw, 68px);
+
   line-height: 1.04;
+
   letter-spacing: -2.5px;
 }
 
 .hero-content h1 span {
   display: block;
+
   color: #39d779;
 }
 
@@ -154,25 +173,28 @@
   color: rgba(255, 255, 255, 0.68);
 
   font-size: 17px;
+
   line-height: 1.7;
 }
 
 
-/* =========================================
-   FEATURES
-========================================= */
+/* =========================================================
+   HERO FEATURES
+========================================================= */
 
 .hero-features {
   margin-top: 40px;
 
   display: flex;
   flex-direction: column;
+
   gap: 17px;
 }
 
 .feature-item {
   display: flex;
   align-items: center;
+
   gap: 13px;
 
   color: rgba(255, 255, 255, 0.82);
@@ -199,12 +221,13 @@
 }
 
 
-/* =========================================
+/* =========================================================
    HERO FOOTER
-========================================= */
+========================================================= */
 
 .hero-bottom {
   position: absolute;
+
   left: 70px;
   bottom: 35px;
 
@@ -212,12 +235,14 @@
 
   display: flex;
   align-items: center;
+
   gap: 12px;
 
   color: rgba(255, 255, 255, 0.4);
 
   font-size: 10px;
   font-weight: 700;
+
   letter-spacing: 1.3px;
 }
 
@@ -226,9 +251,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    LOGIN SECTION
-========================================= */
+========================================================= */
 
 .login-section {
   width: 42%;
@@ -236,6 +261,7 @@
 
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
@@ -251,9 +277,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    LOGIN CARD
-========================================= */
+========================================================= */
 
 .login-card {
   width: 100%;
@@ -262,6 +288,7 @@
   padding: 42px;
 
   border: 1px solid rgba(255, 255, 255, 0.08);
+
   border-radius: 22px;
 
   background: rgba(255, 255, 255, 0.035);
@@ -273,9 +300,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    LOGIN HEADER
-========================================= */
+========================================================= */
 
 .login-header {
   margin-bottom: 34px;
@@ -287,6 +314,7 @@
   color: #ffffff;
 
   font-size: 30px;
+
   line-height: 1.2;
 }
 
@@ -299,18 +327,18 @@
 }
 
 
-/* =========================================
+/* =========================================================
    MOBILE BRAND
-========================================= */
+========================================================= */
 
 .mobile-brand {
   display: none;
 }
 
 
-/* =========================================
+/* =========================================================
    FORM
-========================================= */
+========================================================= */
 
 .form-group {
   margin-bottom: 23px;
@@ -327,6 +355,11 @@
   font-weight: 600;
 }
 
+
+/* =========================================================
+   COMPANY SELECTOR
+========================================================= */
+
 .company-selector {
   min-height: 58px;
 
@@ -337,6 +370,7 @@
   padding: 0 13px 0 16px;
 
   border: 1px solid rgba(255, 255, 255, 0.10);
+
   border-radius: 10px;
 
   background: rgba(255, 255, 255, 0.045);
@@ -351,6 +385,7 @@
 .company-info {
   display: flex;
   align-items: center;
+
   gap: 11px;
 
   color: rgba(255, 255, 255, 0.48);
@@ -364,11 +399,13 @@
 
 .building-icon {
   display: flex;
+
   color: #38d776;
 }
 
 .change-button {
   border: 0;
+
   background: transparent;
 
   color: #42df7b;
@@ -386,9 +423,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    INPUTS
-========================================= */
+========================================================= */
 
 .input-wrapper {
   position: relative;
@@ -396,6 +433,7 @@
 
 .input-icon {
   position: absolute;
+
   left: 16px;
   top: 50%;
 
@@ -413,6 +451,7 @@
   padding: 0 16px 0 47px;
 
   border: 1px solid rgba(255, 255, 255, 0.10);
+
   border-radius: 10px;
 
   outline: none;
@@ -439,18 +478,18 @@
     0 0 0 3px rgba(34, 197, 94, 0.08);
 }
 
-/* Password field gets extra right padding for the toggle button */
 #password {
   padding-right: 46px;
 }
 
 
-/* =========================================
+/* =========================================================
    PASSWORD TOGGLE
-========================================= */
+========================================================= */
 
 .toggle-password-btn {
   position: absolute;
+
   right: 10px;
   top: 50%;
 
@@ -464,6 +503,7 @@
   justify-content: center;
 
   border: 0;
+
   border-radius: 7px;
 
   background: transparent;
@@ -482,9 +522,9 @@
 }
 
 
-/* =========================================
-   PASSWORD
-========================================= */
+/* =========================================================
+   PASSWORD LABEL
+========================================================= */
 
 .password-label {
   display: flex;
@@ -511,13 +551,15 @@
 }
 
 
-/* =========================================
-   VALIDATION STATES
-========================================= */
+/* =========================================================
+   VALIDATION
+========================================================= */
 
 .field-invalid {
-  border-color: #e2554a !important;
-  box-shadow: 0 0 0 3px rgba(226, 85, 74, 0.10) !important;
+  border-color: #35d574 !important;
+
+  box-shadow:
+    0 0 0 3px rgba(226, 85, 74, 0.10) !important;
 }
 
 .error-text {
@@ -525,7 +567,7 @@
 
   margin-top: 7px;
 
-  color: #f08277;
+  color:  #35d574;
 
   font-size: 12px;
   font-weight: 500;
@@ -534,93 +576,35 @@
 .form-error-banner {
   display: flex;
   align-items: center;
+
   gap: 9px;
 
   margin-bottom: 20px;
+
   padding: 12px 14px;
 
-  border: 1px solid rgba(226, 85, 74, 0.35);
+  border: 1px solid rgba(12, 79, 19, 0.35);
+
   border-radius: 10px;
 
   background: rgba(226, 85, 74, 0.09);
 
-  color: #f4a49c;
+  color: #9ff49c;
 
   font-size: 12.5px;
+
   line-height: 1.4;
 }
 
 .form-error-banner svg {
   flex-shrink: 0;
-  color: #e2554a;
+
+  color: #4ae25e;
 }
 
-
-/* =========================================
-   REMEMBER
-========================================= */
-
-.remember-row {
-  margin-top: -3px;
-  margin-bottom: 25px;
-}
-
-.remember-label {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  gap: 9px;
-
-  color: rgba(255, 255, 255, 0.48);
-
-  font-size: 12px;
-
-  cursor: pointer;
-}
-
-.remember-label input {
-  position: absolute;
-  opacity: 0;
-}
-
-.custom-checkbox {
-  width: 17px;
-  height: 17px;
-
-  display: block;
-
-  border: 1px solid rgba(255, 255, 255, 0.20);
-  border-radius: 4px;
-
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.remember-label input:checked + .custom-checkbox {
-  border-color: #24c86a;
-
-  background: #24c86a;
-}
-
-.remember-label input:checked + .custom-checkbox::after {
-  content: '✓';
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 100%;
-
-  color: #ffffff;
-
-  font-size: 11px;
-  font-weight: 700;
-}
-
-
-/* =========================================
+/* =========================================================
    LOGIN BUTTON
-========================================= */
+========================================================= */
 
 .login-button {
   width: 100%;
@@ -629,9 +613,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 10px;
 
   border: 0;
+
   border-radius: 10px;
 
   background: #1fb863;
@@ -664,15 +650,18 @@
 
 .login-button:disabled {
   cursor: not-allowed;
+
   opacity: 0.75;
+
   transform: none;
+
   box-shadow: none;
 }
 
 
-/* =========================================
+/* =========================================================
    SPINNER
-========================================= */
+========================================================= */
 
 .btn-spinner {
   width: 16px;
@@ -681,6 +670,7 @@
   border-radius: 50%;
 
   border: 2px solid rgba(255, 255, 255, 0.35);
+
   border-top-color: #ffffff;
 
   animation: spin 0.7s linear infinite;
@@ -688,6 +678,7 @@
 
 .spinner-dark {
   border: 2px solid rgba(255, 255, 255, 0.12);
+
   border-top-color: #38d776;
 }
 
@@ -698,9 +689,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    SECURITY
-========================================= */
+========================================================= */
 
 .security-info {
   margin-top: 28px;
@@ -719,6 +710,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   gap: 8px;
 
   color: rgba(255, 255, 255, 0.30);
@@ -727,9 +719,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    COPYRIGHT
-========================================= */
+========================================================= */
 
 .copyright {
   margin-top: 25px;
@@ -740,131 +732,9 @@
 }
 
 
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media (max-width: 1100px) {
-
-  .hero-section {
-    width: 50%;
-  }
-
-  .login-section {
-    width: 50%;
-    padding: 30px;
-  }
-
-  .hero-content {
-    padding: 50px 40px;
-  }
-
-  .hero-bottom {
-    left: 40px;
-  }
-
-  .login-card {
-    padding: 32px;
-  }
-}
-
-
-@media (max-width: 800px) {
-
-  .login-page {
-    display: block;
-  }
-
-  .hero-section {
-    width: 100%;
-    min-height: 420px;
-  }
-
-  .hero-content {
-    padding: 40px 30px;
-  }
-
-  .brand {
-    margin-bottom: 65px;
-  }
-
-  .hero-content h1 {
-    font-size: 42px;
-  }
-
-  .hero-bottom {
-    left: 30px;
-    bottom: 25px;
-  }
-
-  .login-section {
-    width: 100%;
-    min-height: auto;
-
-    padding: 35px 20px 45px;
-  }
-
-  .login-card {
-    max-width: 520px;
-  }
-}
-
-
-@media (max-width: 520px) {
-
-  .hero-section {
-    min-height: 390px;
-  }
-
-  .hero-content {
-    padding: 30px 22px;
-  }
-
-  .brand {
-    margin-bottom: 50px;
-  }
-
-  .brand-text {
-    font-size: 25px;
-  }
-
-  .hero-content h1 {
-    font-size: 36px;
-    letter-spacing: -1.5px;
-  }
-
-  .hero-description {
-    font-size: 14px;
-  }
-
-  .hero-bottom {
-    left: 22px;
-
-    font-size: 8px;
-    gap: 7px;
-  }
-
-  .hero-features {
-    display: none;
-  }
-
-  .login-section {
-    padding: 25px 15px 35px;
-  }
-
-  .login-card {
-    padding: 27px 20px;
-
-    border-radius: 17px;
-  }
-
-  .login-header h2 {
-    font-size: 26px;
-  }
-}
-/* =========================================
-   COMPANY MODAL
-========================================= */
+/* =========================================================
+   COMPANY MODAL BACKDROP
+========================================================= */
 
 .modal-backdrop {
   position: fixed;
@@ -886,9 +756,9 @@
 }
 
 
-/* =========================================
-   MODAL
-========================================= */
+/* =========================================================
+   COMPANY MODAL
+========================================================= */
 
 .company-modal {
   width: 100%;
@@ -897,6 +767,7 @@
   overflow: hidden;
 
   border: 1px solid rgba(255, 255, 255, 0.10);
+
   border-radius: 18px;
 
   background: #101c19;
@@ -907,10 +778,14 @@
   animation: modalIn 0.22s ease;
 }
 
+.company-selector-modal {
+  max-width: 560px;
+}
 
-/* =========================================
+
+/* =========================================================
    MODAL HEADER
-========================================= */
+========================================================= */
 
 .modal-header {
   display: flex;
@@ -928,6 +803,7 @@
   color: #ffffff;
 
   font-size: 22px;
+
   line-height: 1.3;
 }
 
@@ -951,6 +827,7 @@
   margin-right: -5px;
 
   border: 0;
+
   border-radius: 8px;
 
   background: transparent;
@@ -969,208 +846,102 @@
 }
 
 
-/* =========================================
-   MODAL FOOTER
-========================================= */
-
-.modal-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 11px;
-
-  padding: 18px 30px 25px;
-
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-
-/* =========================================
-   CANCEL
-========================================= */
-
-.modal-cancel {
-  height: 45px;
-
-  padding: 0 22px;
-
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  border-radius: 8px;
-
-  background: transparent;
-
-  color: rgba(255, 255, 255, 0.68);
-
-  font-size: 13px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: 0.2s ease;
-}
-
-.modal-cancel:hover {
-  border-color: rgba(255, 255, 255, 0.25);
-
-  background: rgba(255, 255, 255, 0.05);
-
-  color: #ffffff;
-}
-
-
-/* =========================================
-   ANIMATIONS
-========================================= */
-
-@keyframes modalBackdropIn {
-
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-
-}
-
-@keyframes modalIn {
-
-  from {
-    opacity: 0;
-    transform: translateY(15px) scale(0.98);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-}
-
-
-/* =========================================
-   MODAL RESPONSIVE
-========================================= */
-
-@media (max-width: 600px) {
-
-  .modal-backdrop {
-    padding: 15px;
-    align-items: flex-end;
-  }
-
-  .company-modal {
-    max-width: 100%;
-
-    border-radius: 17px 17px 12px 12px;
-
-    animation: modalMobileIn 0.22s ease;
-  }
-
-  .modal-header {
-    padding: 23px 21px 19px;
-  }
-
-  .modal-header h3 {
-    font-size: 19px;
-  }
-
-  .modal-footer {
-    padding: 15px 21px 21px;
-  }
-
-}
-
-
-@keyframes modalMobileIn {
-
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-}
-
-/* =========================================
-   COMPANY SELECTOR MODAL
-========================================= */
-
-.company-selector-modal {
-  max-width: 560px;
-}
-
-
-/* =========================================
-   SEARCH
-========================================= */
+/* =========================================================
+   COMPANY SEARCH
+========================================================= */
 
 .company-search {
   position: relative;
 
+  width: calc(100% - 60px);
+  height: 64px;
+
   margin: 22px 30px 10px;
+
+  display: flex;
+  align-items: center;
+
+  background: #172522;
+
+  border: 1px solid #33433f;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.company-search > svg {
+.company-search:focus-within {
+  border-color: #39e879;
+
+  box-shadow:
+    0 0 0 3px rgba(57, 232, 121, 0.08);
+}
+
+
+/* =========================================================
+   SEARCH ICON
+========================================================= */
+
+.company-search .search-icon {
   position: absolute;
 
-  left: 15px;
+  left: 20px;
   top: 50%;
 
   transform: translateY(-50%);
 
-  color: rgba(255, 255, 255, 0.35);
+  color: #7d8985;
 
   pointer-events: none;
+
+  z-index: 2;
 }
+
+
+/* =========================================================
+   SEARCH INPUT
+========================================================= */
 
 .company-search input {
   width: 100%;
-  height: 48px;
+  height: 100%;
 
-  padding: 0 42px 0 45px;
+  padding: 0 120px 0 54px;
 
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 9px;
+  border: none;
 
   outline: none;
 
-  background: rgba(255, 255, 255, 0.045);
+  background: transparent;
 
-  color: #ffffff;
+  color: #f2f5f4;
 
-  font-size: 13px;
+  font-size: 15px;
 
-  transition: 0.2s ease;
+  font-weight: 500;
 }
 
 .company-search input::placeholder {
-  color: rgba(255, 255, 255, 0.28);
-}
-
-.company-search input:focus {
-  border-color: rgba(43, 201, 108, 0.65);
-
-  background: rgba(255, 255, 255, 0.06);
-
-  box-shadow:
-    0 0 0 3px rgba(43, 201, 108, 0.07);
+  color: #78847f;
 }
 
 
-.clear-search {
+/* =========================================================
+   CLEAR SEARCH
+========================================================= */
+
+.company-search .clear-search {
   position: absolute;
 
-  right: 11px;
+  right: 70px;
   top: 50%;
 
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
 
   transform: translateY(-50%);
 
@@ -1178,26 +949,103 @@
   align-items: center;
   justify-content: center;
 
-  border: 0;
-  border-radius: 6px;
+  border: none;
+
+  border-radius: 50%;
 
   background: transparent;
 
-  color: rgba(255, 255, 255, 0.35);
+  color: #7d8985;
 
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
-.clear-search:hover {
+.company-search .clear-search:hover {
+  background: rgba(255, 255, 255, 0.06);
+
   color: #ffffff;
-
-  background: rgba(255, 255, 255, 0.07);
 }
 
 
-/* =========================================
+/* =========================================================
+   SEARCH SUBMIT BUTTON
+========================================================= */
+
+.company-search .search-submit-button {
+  position: absolute;
+
+  right: 6px;
+  top: 6px;
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background: #39e879;
+
+  color: #07110c;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.company-search .search-submit-button:hover:not(:disabled) {
+  background: #4af58a;
+}
+
+.company-search .search-submit-button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.company-search .search-submit-button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.65;
+}
+
+
+/* =========================================================
+   SEARCH SPINNER
+========================================================= */
+
+.search-spinner {
+  width: 17px;
+  height: 17px;
+
+  border: 2px solid rgba(0, 0, 0, 0.25);
+
+  border-top-color: #07110c;
+
+  border-radius: 50%;
+
+  animation: searchSpin 0.7s linear infinite;
+}
+
+@keyframes searchSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
    COMPANY LIST
-========================================= */
+========================================================= */
 
 .company-list {
   max-height: 310px;
@@ -1206,9 +1054,6 @@
 
   padding: 8px 15px 12px;
 }
-
-
-/* Scrollbar */
 
 .company-list::-webkit-scrollbar {
   width: 5px;
@@ -1225,14 +1070,15 @@
 }
 
 
-/* =========================================
-   COMPANY LOADING STATE
-========================================= */
+/* =========================================================
+   COMPANY LOADING
+========================================================= */
 
 .company-loading {
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 10px;
 
   min-height: 190px;
@@ -1243,9 +1089,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    COMPANY OPTION
-========================================= */
+========================================================= */
 
 .company-option {
   width: 100%;
@@ -1262,6 +1108,7 @@
   margin-bottom: 4px;
 
   border: 1px solid transparent;
+
   border-radius: 10px;
 
   background: transparent;
@@ -1288,9 +1135,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    COMPANY AVATAR
-========================================= */
+========================================================= */
 
 .company-avatar {
   width: 42px;
@@ -1320,9 +1167,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    COMPANY DETAILS
-========================================= */
+========================================================= */
 
 .company-details {
   min-width: 0;
@@ -1344,12 +1191,14 @@
   font-weight: 600;
 
   text-overflow: ellipsis;
+
   white-space: nowrap;
 }
 
 .company-location {
   display: flex;
   align-items: center;
+
   gap: 4px;
 
   color: rgba(255, 255, 255, 0.34);
@@ -1362,9 +1211,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    SELECTED CHECK
-========================================= */
+========================================================= */
 
 .selected-check {
   width: 27px;
@@ -1384,15 +1233,16 @@
 }
 
 
-/* =========================================
+/* =========================================================
    EMPTY STATE
-========================================= */
+========================================================= */
 
 .company-empty {
   min-height: 190px;
 
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
@@ -1436,20 +1286,73 @@
 
 .company-empty .host-button {
   margin-top: 12px;
+
   border: 1px solid rgba(64, 216, 120, 0.3);
+
   border-radius: 7px;
 }
 
 
-/* =========================================
-   COMPANY MODAL FOOTER
-========================================= */
+/* =========================================================
+   MODAL FOOTER
+========================================================= */
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 11px;
+
+  padding: 18px 30px 25px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
 
 .company-modal-footer {
   justify-content: space-between;
 
   gap: 10px;
 }
+
+
+/* =========================================================
+   CANCEL BUTTON
+========================================================= */
+
+.modal-cancel {
+  height: 45px;
+
+  padding: 0 22px;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.68);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.modal-cancel:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   HOST BUTTON
+========================================================= */
 
 .host-button {
   height: 43px;
@@ -1475,17 +1378,176 @@
 .host-button:hover {
   color: #7af2a5;
 }
-/* =========================================
-   MOBILE
-========================================= */
+
+
+/* =========================================================
+   MODAL ANIMATIONS
+========================================================= */
+
+@keyframes modalBackdropIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(15px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes modalMobileIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .hero-section {
+    width: 50%;
+  }
+
+  .login-section {
+    width: 50%;
+
+    padding: 30px;
+  }
+
+  .hero-content {
+    padding: 50px 40px;
+  }
+
+  .hero-bottom {
+    left: 40px;
+  }
+
+  .login-card {
+    padding: 32px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE / TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .login-page {
+    display: block;
+  }
+
+  .hero-section {
+    width: 100%;
+
+    min-height: 420px;
+  }
+
+  .hero-content {
+    padding: 40px 30px;
+  }
+
+  .brand {
+    margin-bottom: 65px;
+  }
+
+  .hero-content h1 {
+    font-size: 42px;
+  }
+
+  .hero-bottom {
+    left: 30px;
+
+    bottom: 25px;
+  }
+
+  .login-section {
+    width: 100%;
+
+    min-height: auto;
+
+    padding: 35px 20px 45px;
+  }
+
+  .login-card {
+    max-width: 520px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
+
+  .modal-backdrop {
+    padding: 15px;
+
+    align-items: flex-end;
+  }
+
+  .company-modal {
+    max-width: 100%;
+
+    border-radius:
+      17px
+      17px
+      12px
+      12px;
+
+    animation: modalMobileIn 0.22s ease;
+  }
 
   .company-selector-modal {
     max-height: 90vh;
   }
 
+  .modal-header {
+    padding: 23px 21px 19px;
+  }
+
+  .modal-header h3 {
+    font-size: 19px;
+  }
+
+  .modal-footer {
+    padding: 15px 21px 21px;
+  }
+
   .company-search {
+    width: calc(100% - 42px);
+
     margin-left: 21px;
     margin-right: 21px;
   }
@@ -1505,5 +1567,762 @@
   .company-modal-footer {
     flex-wrap: wrap;
   }
+}
 
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+  .hero-section {
+    min-height: 390px;
+  }
+
+  .hero-content {
+    padding: 30px 22px;
+  }
+
+  .brand {
+    margin-bottom: 50px;
+  }
+
+  .brand-text {
+    font-size: 25px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+
+    letter-spacing: -1.5px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .hero-bottom {
+    left: 22px;
+
+    font-size: 8px;
+
+    gap: 7px;
+  }
+
+  .hero-features {
+    display: none;
+  }
+
+  .login-section {
+    padding: 25px 15px 35px;
+  }
+
+  .login-card {
+    padding: 27px 20px;
+
+    border-radius: 17px;
+  }
+
+  .login-header h2 {
+    font-size: 26px;
+  }
+
+  .company-search {
+    height: 58px;
+
+    border-radius: 13px;
+  }
+
+  .company-search .search-submit-button {
+    width: 46px;
+    height: 46px;
+
+    top: 5px;
+    right: 5px;
+
+    border-radius: 10px;
+  }
+
+  .company-search .clear-search {
+    right: 60px;
+
+    width: 30px;
+    height: 30px;
+  }
+
+  .company-search input {
+    padding-left: 48px;
+    padding-right: 105px;
+
+    font-size: 14px;
+  }
+
+  .company-search .search-icon {
+    left: 16px;
+  }
+}
+/* =========================================
+   HOST MODE
+========================================= */
+
+.host-mode-banner {
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 23px;
+  padding: 10px 13px;
+
+  border: 1px solid rgba(57, 232, 121, 0.22);
+  border-radius: 10px;
+
+  background: rgba(57, 232, 121, 0.06);
+}
+
+.host-mode-icon {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: rgba(57, 232, 121, 0.14);
+
+  color: #39e879;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.host-mode-content {
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.host-mode-content strong {
+  color: rgba(255, 255, 255, 0.86);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.host-mode-content span {
+  color: rgba(255, 255, 255, 0.38);
+
+  font-size: 11px;
+}
+
+.host-change-button {
+  border: 0;
+  background: transparent;
+
+  color: #40d878;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  padding: 7px 5px;
+}
+
+.host-change-button:hover {
+  color: #7af2a5;
+}
+/* =========================================================
+   CHANGE COMPANY POPUP
+========================================================= */
+
+.change-company-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.72);
+
+  animation: changeCompanyBackdropIn 0.2s ease;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.change-company-modal {
+  width: min(600px, calc(100% - 40px));
+
+  background: #ffffff;
+
+  border-radius: 9px;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.35);
+
+  overflow: hidden;
+
+  animation: changeCompanyModalIn 0.22s ease;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.change-company-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 46px 52px 30px;
+}
+
+.change-company-header h2 {
+  margin: 0;
+
+  color: #173d36;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.change-company-close {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #7b7b7b;
+
+  font-size: 31px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.change-company-close:hover {
+  color: #333333;
+
+  transform: scale(1.08);
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.change-company-body {
+  padding: 0 52px 28px;
+}
+
+.change-company-body label {
+  display: block;
+
+  margin-bottom: 11px;
+
+  color: #555555;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.change-company-body label span {
+  color: #39e879;
+}
+
+
+/* =========================================================
+   COMPANY INPUT
+========================================================= */
+
+.change-company-body input {
+  width: 100%;
+  height: 46px;
+
+  padding: 0 14px;
+
+  border: 1px solid #cfcfcf;
+
+  border-radius: 4px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #333333;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.change-company-body input::placeholder {
+  color: #999999;
+}
+
+.change-company-body input:focus {
+  border-color: #8aa7a0;
+
+  box-shadow:
+    0 0 0 3px rgba(23, 61, 54, 0.08);
+}
+
+
+/* =========================================================
+   INFO MESSAGE
+========================================================= */
+
+.change-company-info {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 18px;
+
+  color: #666666;
+
+  font-size: 14px;
+}
+
+.info-icon {
+  width: 15px;
+  height: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #666666;
+
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.change-company-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 0 52px;
+
+  padding: 19px 0 30px;
+
+  border-top: 1px solid #d2d2d2;
+}
+
+
+/* =========================================================
+   CANCEL
+========================================================= */
+
+.change-company-cancel {
+  height: 50px;
+
+  padding: 0 28px;
+
+  border: 1px solid #cbd7e3;
+
+  border-radius: 25px;
+
+  background: #ffffff;
+
+  color: #4f6178;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.change-company-cancel:hover {
+  background: #f5f7f9;
+
+  border-color: #aebdcb;
+}
+
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+.change-company-save {
+  min-width: 101px;
+  height: 50px;
+
+  padding: 0 28px;
+
+  border: none;
+
+  border-radius: 25px;
+
+  background: #df0000;
+
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.change-company-save:hover {
+  background: #156633;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 7px 18px rgba(5, 58, 13, 0.2);
+}
+
+.change-company-save:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes changeCompanyBackdropIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+@keyframes changeCompanyModalIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-15px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .change-company-backdrop {
+    padding: 20px;
+  }
+
+  .change-company-modal {
+    width: 100%;
+
+    border-radius: 8px;
+  }
+
+  .change-company-header {
+    padding: 30px 25px 22px;
+  }
+
+  .change-company-header h2 {
+    font-size: 25px;
+  }
+
+  .change-company-body {
+    padding: 0 25px 25px;
+  }
+
+  .change-company-footer {
+    margin: 0 25px;
+
+    padding: 17px 0 25px;
+  }
+
+  .change-company-cancel,
+  .change-company-save {
+    height: 46px;
+
+    font-size: 14px;
+  }
+
+}
+
+/* =========================================================
+   CHANGE COMPANY MODAL - SCREENSHOT STYLE
+========================================================= */
+.change-company-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(3px);
+  animation: changeCompanyBackdropIn 0.2s ease;
+}
+
+.change-company-modal {
+  width: min(600px, calc(100% - 40px));
+  background: #ffffff;
+  border-radius: 9px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  animation: changeCompanyModalIn 0.22s ease;
+}
+
+.change-company-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 46px 52px 30px;
+}
+
+.change-company-header h2 {
+  margin: 0;
+  color: #173d36;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.change-company-close {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #7b7b7b;
+  font-size: 31px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.change-company-close:hover {
+  color: #333333;
+  transform: scale(1.08);
+}
+
+.change-company-body {
+  padding: 0 52px 28px;
+}
+
+.change-company-body label {
+  display: block;
+  margin-bottom: 11px;
+  color: #555555;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.change-company-body label span {
+  color: #145b2e;
+}
+
+.change-company-body input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px;
+  outline: none;
+  background: #ffffff;
+  color: #333333;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.change-company-body input::placeholder { color: #999999; }
+
+.change-company-body input:focus {
+  border-color: #8aa7a0;
+  box-shadow: 0 0 0 3px rgba(23, 61, 54, 0.08);
+}
+
+.change-company-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  color: #666666;
+  font-size: 14px;
+}
+
+.info-icon {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #666666;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.change-company-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 52px;
+  padding: 19px 0 30px;
+  border-top: 1px solid #d2d2d2;
+}
+
+.change-company-cancel {
+  height: 50px;
+  padding: 0 28px;
+  border: 1px solid #cbd7e3;
+  border-radius: 25px;
+  background: #ffffff;
+  color: #4f6178;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.change-company-cancel:hover {
+  background: #f5f7f9;
+  border-color: #aebdcb;
+}
+
+.change-company-save {
+  min-width: 101px;
+  height: 50px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: 25px;
+  background: #0c361b;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.change-company-save:hover:not(:disabled) {
+  background: #21a150;
+  transform: translateY(-1px);
+  box-shadow: 0 7px 18px rgba(223, 0, 0, 0.20);
+}
+
+.change-company-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .change-company-backdrop { padding: 20px; }
+  .change-company-modal { width: 100%; border-radius: 8px; }
+  .change-company-header { padding: 30px 25px 22px; }
+  .change-company-header h2 { font-size: 25px; }
+  .change-company-body { padding: 0 25px 25px; }
+  .change-company-footer { margin: 0 25px; padding: 17px 0 25px; }
+  .change-company-cancel, .change-company-save { height: 46px; font-size: 14px; }
+}
+
+/* =========================================================
+   REGISTER LINK
+========================================================= */
+
+.register-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  margin-top: 18px;
+
+  font-size: 13px;
+}
+
+.register-row span {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.register-row a {
+  color: #39e879;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.register-row a:hover {
+  color: #70f2a3;
+  text-decoration: underline;
 }
