@@ -19,6 +19,8 @@ export class CompanyPopupComponent {
 
   @Input() companySearch = '';
 
+  @Input() hostError = '';
+
   // =========================================================
   // EVENTS TO LOGIN BODY
   // =========================================================
@@ -30,7 +32,7 @@ export class CompanyPopupComponent {
   @Output() companyVerified = new EventEmitter<string>();
 
   @Output() continueAsHost =
-    new EventEmitter<void>();
+    new EventEmitter<string>();
 
   // =========================================================
   // EMBEDDED VERIFICATION COMPONENT
@@ -93,7 +95,7 @@ export class CompanyPopupComponent {
       return;
     }
 
-    this.continueAsHost.emit();
+   this.continueAsHost.emit(this.companySearch.trim());
   }
 
   // =========================================================

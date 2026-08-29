@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { AuthService } from '../services/auth.service';
+
 @Component({
   selector: 'app-otp-popup',
   standalone: true,
@@ -17,6 +19,7 @@ export class OtpPopupComponent implements OnChanges {
 
   @Input() show = false;
   @Input() email = '';
+  @Input() userId: number | null = null;
 
   // =========================================================
   // EVENTS TO LOGIN BODY
@@ -39,9 +42,7 @@ export class OtpPopupComponent implements OnChanges {
 
   private readonly codeLength = 6;
 
-  // MOCK ONLY: the code we "sent". In a real app this lives
-  // server-side and is never exposed to the client.
-  private generatedCode = '';
+  constructor(private readonly authService: AuthService) {}
 
   // =========================================================
   // LIFECYCLE
@@ -69,26 +70,25 @@ export class OtpPopupComponent implements OnChanges {
   }
 
   // =========================================================
-  // SEND CODE (MOCK)
+  // SEND CODE
   // =========================================================
 
   private sendCode(): void {
 
-    this.generatedCode = this.generateCode();
+    if (!this.userId) {
+      this.errorMessage = 'Missing user reference. Please try logging in again.';
+      return;
+    }
 
-    // MOCK ONLY: replace with a real API call, e.g.
-    // this.otpService.sendCode(this.email).subscribe(...)
-    console.log(
-      `Verification code sent to ${this.email}:`,
-      this.generatedCode
-    );
-  }
-
-  private generateCode(): string {
-
-    return Math.floor(
-      100000 + Math.random() * 900000
-    ).toString();
+    this.authService.sendTwoFactorCode(this.userId).subscribe({
+      next: () => {
+        console.log(`Verification code sent to ${this.email}`);
+      },
+      error: (error: unknown) => {
+        console.error('Failed to send OTP:', error);
+        this.errorMessage = 'Unable to send verification code. Please try again.';
+      }
+    });
   }
 
   // =========================================================
@@ -105,34 +105,33 @@ export class OtpPopupComponent implements OnChanges {
 
   verifyCode(): void {
 
-    if (this.isVerifying) {
+    if (this.isVerifying || !this.userId) {
       return;
     }
 
     this.errorMessage = '';
 
     if (!this.isCodeValid) {
-
-      this.errorMessage =
-        `Enter the ${this.codeLength}-digit code.`;
-
+      this.errorMessage = `Enter the ${this.codeLength}-digit code.`;
       return;
     }
 
     this.isVerifying = true;
 
-    setTimeout(() => {
+    this.authService.verifyOtp(this.userId, this.code.trim()).subscribe({
 
-      this.isVerifying = false;
-
-      if (this.code.trim() === this.generatedCode) {
+      next: () => {
+        this.isVerifying = false;
         this.verified.emit();
-        return;
+      },
+
+      error: (error: unknown) => {
+        console.error('OTP verification failed:', error);
+        this.isVerifying = false;
+        this.errorMessage = 'Invalid or expired code.';
       }
 
-      this.errorMessage = 'Invalid or expired code.';
-
-    }, 800);
+    });
   }
 
   // =========================================================
@@ -141,7 +140,7 @@ export class OtpPopupComponent implements OnChanges {
 
   resendCode(): void {
 
-    if (this.isResending || this.isVerifying) {
+    if (this.isResending || this.isVerifying || !this.userId) {
       return;
     }
 
@@ -149,15 +148,21 @@ export class OtpPopupComponent implements OnChanges {
     this.errorMessage = '';
     this.resendMessage = '';
 
-    setTimeout(() => {
+    this.authService.resendOtp(this.userId).subscribe({
 
-      this.sendCode();
+      next: () => {
+        this.isResending = false;
+        this.code = '';
+        this.resendMessage = 'A new code has been sent.';
+      },
 
-      this.isResending = false;
-      this.code = '';
-      this.resendMessage = 'A new code has been sent.';
+      error: (error: unknown) => {
+        console.error('Resend OTP failed:', error);
+        this.isResending = false;
+        this.errorMessage = 'Unable to resend code. Please try again.';
+      }
 
-    }, 600);
+    });
   }
 
   // =========================================================

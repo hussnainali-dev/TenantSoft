@@ -1,13 +1,20 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
-import { Company } from '../models/company';
-import { CompanyService } from '../services/company.service';
+import { AuthService, TenantAvailabilityState } from '../services/auth.service';
 import { CompanyPopupComponent } from '../company-popup/company-popup.component';
 import { OtpPopupComponent } from '../otp-popup/otp-popup.component';
 
 const REMEMBER_EMAIL_KEY = 'safeflow_remember_email';
+
+interface Company {
+  id: string;
+  name: string;
+  tenancyName: string;
+  location: string;
+  initials: string;
+}
 
 @Component({
   selector: 'app-login-body',
@@ -24,18 +31,20 @@ const REMEMBER_EMAIL_KEY = 'safeflow_remember_email';
 export class LoginBodyComponent implements OnInit {
 
   // =========================================================
-  // OTP VERIFICATION (delegated to app-otp-popup)
+  // OTP VERIFICATION
   // =========================================================
 
   showOtpModal = false;
+  pendingUserId: number | null = null;
 
   onOtpClose(): void {
     this.showOtpModal = false;
+    this.pendingUserId = null;
   }
 
   onOtpVerified(): void {
     this.showOtpModal = false;
-    this.completeLogin();
+    this.isLoggingIn = false;
     this.router.navigate(['/dashboard']);
   }
 
@@ -66,40 +75,35 @@ export class LoginBodyComponent implements OnInit {
       return;
     }
 
-    // -------------------------------------------------------
-    // OPEN OTP VERIFICATION (login completes once verified)
-    // -------------------------------------------------------
-
-    this.showOtpModal = true;
-  }
-
-  // =========================================================
-  // COMPLETE LOGIN (runs after OTP is verified)
-  // =========================================================
-
-  private completeLogin(): void {
-
-    this.isLoggingIn = true;
-
     if (this.rememberMe) {
       localStorage.setItem(REMEMBER_EMAIL_KEY, this.email.trim());
     } else {
       localStorage.removeItem(REMEMBER_EMAIL_KEY);
     }
 
-    setTimeout(() => {
+    this.isLoggingIn = true;
 
-      this.isLoggingIn = false;
+    this.authService.login(this.email.trim(), this.password, this.rememberMe).subscribe({
 
-      console.log('Login submitted:', {
-        companyId: this.selectedCompany?.id ?? null,
-        companyName: this.selectedCompany?.name ?? this.hostCompanyName,
-        isHostMode: this.isHostMode,
-        email: this.email.trim(),
-        rememberMe: this.rememberMe
-      });
+      next: (result) => {
 
-    }, 900);
+        if (result.requiresTwoFactorVerification) {
+          this.pendingUserId = result.userId;
+          this.showOtpModal = true;
+          return;
+        }
+
+        this.isLoggingIn = false;
+        this.router.navigate(['/dashboard']);
+      },
+
+      error: (error: unknown) => {
+        console.error('Login error:', error);
+        this.isLoggingIn = false;
+        this.formError = 'Login failed. Please check your credentials and try again.';
+      }
+
+    });
   }
 
   email = '';
@@ -115,7 +119,7 @@ export class LoginBodyComponent implements OnInit {
   isLoggingIn = false;
 
   // =========================================================
-  // COMPANY
+  // COMPANY (backed entirely by AuthService.checkTenant)
   // =========================================================
 
   selectedCompany: Company | null = null;
@@ -136,19 +140,13 @@ export class LoginBodyComponent implements OnInit {
   isHostMode = false;
   hostCompanyName = '';
 
-  private readonly localCompanies: string[] = [
-    'PamexSoft',
-    'WebSoft',
-    'CloudyAir'
-  ];
-
   private readonly emailPattern =
     /^[^\s@]+@[^.\s@]+(?:\.[^.\s@]+)+$/;
 
   private readonly minPasswordLength = 6;
 
   constructor(
-    @Inject(CompanyService) private readonly companyService: CompanyService,
+    private readonly authService: AuthService,
     private readonly router: Router
   ) {}
 
@@ -186,11 +184,7 @@ export class LoginBodyComponent implements OnInit {
 
   openCompanyModal(): void {
 
-    if (this.selectedCompany) {
-      this.companySearch = this.selectedCompany.name;
-    } else {
-      this.companySearch = '';
-    }
+    this.companySearch = this.selectedCompany?.tenancyName ?? '';
 
     this.companies = [];
     this.companyError = '';
@@ -208,6 +202,11 @@ export class LoginBodyComponent implements OnInit {
     this.isLoadingCompanies = false;
   }
 
+  // =========================================================
+  // SEARCH = single tenant lookup via checkTenant
+  // (no list-search endpoint exists on the backend)
+  // =========================================================
+
   searchCompany(): void {
 
     const search = this.companySearch.trim();
@@ -222,22 +221,24 @@ export class LoginBodyComponent implements OnInit {
 
     this.isLoadingCompanies = true;
 
-    this.companyService.getCompanies(search).subscribe({
+    this.authService.checkTenant(search).subscribe({
 
-      next: (companies: Company[]) => {
+      next: (result) => {
 
-        this.companies = companies;
         this.isLoadingCompanies = false;
 
-        if (companies.length === 0) {
-          this.companyError = 'Enter valid company';
+        if (result.state === TenantAvailabilityState.Available) {
+          this.companies = [this.buildCompanyFromName(search)];
+        } else {
+          this.companies = [];
+          this.companyError = result.state === TenantAvailabilityState.InActive
+            ? 'This company account is inactive.'
+            : 'Enter valid company';
         }
       },
 
       error: (error: unknown) => {
-
         console.error('Error searching company:', error);
-
         this.companies = [];
         this.isLoadingCompanies = false;
         this.companyError = 'Unable to search company. Please try again.';
@@ -248,10 +249,19 @@ export class LoginBodyComponent implements OnInit {
 
   selectCompany(company: Company): void {
 
-    this.companySearch = company.name;
+    this.selectedCompany = company;
 
+    this.companySearch = company.tenancyName;
     this.companies = [];
     this.companyError = '';
+
+    this.isHostMode = false;
+    this.hostCompanyName = '';
+
+    this.companyTouched = false;
+    this.formError = '';
+
+    this.showCompanyModal = false;
   }
 
   onCompanyVerified(companyName: string): void {
@@ -265,8 +275,6 @@ export class LoginBodyComponent implements OnInit {
     this.formError = '';
 
     this.showCompanyModal = false;
-
-    console.log('Company verification successful:', companyName);
   }
 
   private buildCompanyFromName(name: string): Company {
@@ -274,6 +282,7 @@ export class LoginBodyComponent implements OnInit {
     return {
       id: name,
       name,
+      tenancyName: name,
       location: '',
       initials: name
         .split(/\s+/)
@@ -285,36 +294,51 @@ export class LoginBodyComponent implements OnInit {
     };
   }
 
-  continueAsHost(): void {
+  continueAsHost(companyName: string): void {
 
-    const companyName = this.companySearch.trim();
+  const trimmed = companyName.trim();
 
-    if (!companyName) {
-      this.companyError = 'Please enter a company name.';
-      return;
-    }
-
-    const matchedCompany = this.localCompanies.find(
-      company => company.toLowerCase() === companyName.toLowerCase()
-    );
-
-    if (!matchedCompany) {
-      this.companyError = 'Enter valid company';
-      return;
-    }
-
-    this.isHostMode = true;
-    this.hostCompanyName = matchedCompany;
-    this.selectedCompany = null;
-
-    this.companyTouched = false;
-    this.formError = '';
-    this.companyError = '';
-
-    this.showCompanyModal = false;
-
-    console.log('Continue as Host:', matchedCompany);
+  if (!trimmed) {
+    this.companyError = 'Please enter a company name.';
+    return;
   }
+
+  this.isLoadingCompanies = true;
+  this.companyError = '';
+
+  this.authService.checkTenant(trimmed).subscribe({
+
+    next: (result) => {
+      this.isLoadingCompanies = false;
+
+      switch (result.state) {
+        case TenantAvailabilityState.Available:
+          this.isHostMode = true;
+          this.hostCompanyName = trimmed;
+          this.selectedCompany = null;
+          this.companyTouched = false;
+          this.formError = '';
+          this.companyError = '';
+          this.showCompanyModal = false;
+          break;
+
+        case TenantAvailabilityState.InActive:
+          this.companyError = 'This company account is inactive.';
+          break;
+
+        case TenantAvailabilityState.NotFound:
+          this.companyError = 'Enter valid company';
+          break;
+      }
+    },
+
+    error: (error: unknown) => {
+      console.error('Tenant check failed:', error);
+      this.isLoadingCompanies = false;
+      this.companyError = 'Unable to verify company. Please try again.';
+    }
+  });
+}
 
   private restoreRememberedEmail(): void {
 

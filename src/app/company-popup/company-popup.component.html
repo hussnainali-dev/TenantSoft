@@ -1,31 +1,20 @@
 @if (show) {
-
-  <div
-    class="company-popup-backdrop"
-    (click)="onBackgroundClick($event)"
-  >
-
+  <div class="company-popup-backdrop" (click)="onBackgroundClick($event)">
     <div
       class="company-popup"
       role="dialog"
       aria-modal="true"
       aria-labelledby="companyPopupTitle"
     >
-
       <!-- =========================================
            HEADER
       ========================================== -->
 
       <div class="company-popup-header">
-
         <div>
-          <h2 id="companyPopupTitle">
-            Change Company
-          </h2>
+          <h2 id="companyPopupTitle">Change Company</h2>
 
-          <p>
-            Enter your company name to continue.
-          </p>
+          <p>Enter your company name to continue.</p>
         </div>
 
         <button
@@ -37,21 +26,17 @@
         >
           ×
         </button>
-
       </div>
-
 
       <!-- =========================================
            BODY
       ========================================== -->
 
       <div class="company-popup-body">
-
         <label for="companyName">
           Company Name
           <span>*</span>
         </label>
-
 
         <input
           id="companyName"
@@ -61,7 +46,6 @@
           autocomplete="off"
           [disabled]="isVerifying"
         />
-
 
         <!-- =========================================
              VERIFICATION (loading + error rendered
@@ -74,31 +58,25 @@
           (verificationFailed)="onVerificationFailed($event)"
         ></app-verification>
 
-
         <!-- =========================================
              INFO
         ========================================== -->
 
         <div class="company-popup-info">
+          <span class="info-icon"> i </span>
 
-          <span class="info-icon">
-            i
-          </span>
-
-          <span>
-            Enter a valid company name.
-          </span>
-
+          <span> Enter a valid company name. </span>
         </div>
-
       </div>
-
 
       <!-- =========================================
            FOOTER
       ========================================== -->
 
       <div class="company-popup-footer">
+        @if (hostError) {
+          <span class="error-text">{{ hostError }}</span>
+        }
 
         <button
           type="button"
@@ -109,7 +87,6 @@
           Cancel
         </button>
 
-
         <button
           type="button"
           class="company-popup-host"
@@ -119,32 +96,21 @@
           Continue as Host
         </button>
 
-
         <button
           type="button"
           class="company-popup-save"
           [disabled]="isVerifying"
           (click)="onSave()"
         >
-
           @if (isVerifying) {
-
             <span class="popup-spinner"></span>
 
             Verifying...
-
           } @else {
-
             Save
-
           }
-
         </button>
-
       </div>
-
     </div>
-
   </div>
-
 }

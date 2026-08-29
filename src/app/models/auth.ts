@@ -1,6 +1,7 @@
-export interface Company {
+export interface Auth {
   id: string;
   name: string;
+  tenancyName: string;
   location: string;
   initials: string;
 }

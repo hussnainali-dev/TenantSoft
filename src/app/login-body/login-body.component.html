@@ -586,7 +586,15 @@
 <app-company-popup
   [show]="showCompanyModal"
   [companySearch]="companySearch"
+  [hostError]="companyError"
   (close)="closeCompanyModal()"
   (companyVerified)="onCompanyVerified($event)"
-  (continueAsHost)="continueAsHost()"
+  (continueAsHost)="continueAsHost($event)"
 ></app-company-popup>
+<app-otp-popup
+  [show]="showOtpModal"
+  [email]="email"
+  [userId]="pendingUserId"
+  (close)="onOtpClose()"
+  (verified)="onOtpVerified()"
+></app-otp-popup>
